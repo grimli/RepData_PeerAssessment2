@@ -12,25 +12,22 @@ The following libraries will be used in the analysis
 ```{r, echo=TRUE}
 library(plyr)
 library(ggplot2)
-library(chron)
 ```
 
 * **plyr**: will be used to manipulate datas
 * **ggplot2**: will be used for some of the plot
-* **chron**: will be used to discriminate between weekdays and weekends
 
 I will suppose that the required project has been cloned in the home 
 directory of a linux machine; otherwise the proper working directory should be inserted below
 
 ```{r, echo=TRUE}
-setwd("~/RepData_PeerAssessment1")
+setwd("~/RepData_PeerAssessment2")
 ```
 
 ## Loading and preprocessing the data
-The data are contained in a compressed file; I have to uncompress it and to load it. I will specify the NA string too.
+If they are not locally stored I download the required files: 
 
-```{r, echo=TRUE}
-unzip("activity.zip")
+* the data file
+* the documentation file
+* the FAQ file
 
-activity <- read.csv2("activity.csv", sep = ",", na.strings = "NA")
-```
