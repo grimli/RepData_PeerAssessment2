@@ -12,10 +12,12 @@ The following libraries will be used in the analysis
 ```{r, echo=TRUE}
 library(plyr)
 library(ggplot2)
+library(RCurl)
 ```
 
-* **plyr**: will be used to manipulate datas
-* **ggplot2**: will be used for some of the plot
+* **plyr**: used to manipulate datas
+* **ggplot2**: used for some of the plot
+* **RCurl**: used to get file in https
 
 I will suppose that the required project has been cloned in the home 
 directory of a linux machine; otherwise the proper working directory should be inserted below
@@ -27,7 +29,33 @@ setwd("~/RepData_PeerAssessment2")
 ## Loading and preprocessing the data
 If they are not locally stored I download the required files: 
 
-* the data file
-* the documentation file
-* the FAQ file
+* the data file: https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2
+* the documentation file: https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf
+* the FAQ file: https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf
+
+```{r, echo=TRUE}
+destfile="StormData.csv.bz2"
+fileURL="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
+if(!file.exists(destfile)){
+    download.file(url=fileURL,
+              destfile=destfile,
+              method='curl') 
+}
+
+destfile="01016005curr.pdf"
+fileURL="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf"
+if(!file.exists(destfile)){
+    download.file(url=fileURL,
+              destfile=destfile,
+              method='curl') 
+}
+
+destfile="FAQ_Page.pdf"
+fileURL="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf"
+if(!file.exists(destfile)){
+    download.file(url=fileURL,
+              destfile=destfile,
+              method='curl') 
+}
+```
 

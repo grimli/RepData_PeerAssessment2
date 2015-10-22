@@ -70,10 +70,13 @@ img {
 
 <p>The following libraries will be used in the analysis</p>
 <pre class="r"><code>library(plyr)
-library(ggplot2)</code></pre>
+library(ggplot2)
+library(RCurl)</code></pre>
+<pre><code>## Loading required package: bitops</code></pre>
 <ul>
-<li><strong>plyr</strong>: will be used to manipulate datas</li>
-<li><strong>ggplot2</strong>: will be used for some of the plot</li>
+<li><strong>plyr</strong>: used to manipulate datas</li>
+<li><strong>ggplot2</strong>: used for some of the plot</li>
+<li><strong>RCurl</strong>: used to get file in https</li>
 </ul>
 <p>I will suppose that the required project has been cloned in the home directory of a linux machine; otherwise the proper working directory should be inserted below</p>
 <pre class="r"><code>setwd(&quot;~/RepData_PeerAssessment2&quot;)</code></pre>
@@ -81,10 +84,33 @@ library(ggplot2)</code></pre>
 <h2>Loading and preprocessing the data</h2>
 <p>If they are not locally stored I download the required files:</p>
 <ul>
-<li>the data file</li>
-<li>the documentation file</li>
-<li>the FAQ file</li>
+<li>the data file: <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2">https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2</a></li>
+<li>the documentation file: <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf">https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf</a></li>
+<li>the FAQ file: <a href="https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf">https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf</a></li>
 </ul>
+<pre class="r"><code>destfile=&quot;StormData.csv.bz2&quot;
+fileURL=&quot;https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2&quot;
+if(!file.exists(destfile)){
+    download.file(url=fileURL,
+              destfile=destfile,
+              method='curl') 
+}
+
+destfile=&quot;01016005curr.pdf&quot;
+fileURL=&quot;https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2Fpd01016005curr.pdf&quot;
+if(!file.exists(destfile)){
+    download.file(url=fileURL,
+              destfile=destfile,
+              method='curl') 
+}
+
+destfile=&quot;FAQ_Page.pdf&quot;
+fileURL=&quot;https://d396qusza40orc.cloudfront.net/repdata%2Fpeer2_doc%2FNCDC%20Storm%20Events-FAQ%20Page.pdf&quot;
+if(!file.exists(destfile)){
+    download.file(url=fileURL,
+              destfile=destfile,
+              method='curl') 
+}</code></pre>
 </div>
 
 
