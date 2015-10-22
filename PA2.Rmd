@@ -1,0 +1,36 @@
+---
+title: "PA2_RepRes"
+author: "Edoardo Bompiani"
+date: "22/10/2015"
+output: html_document
+keep_md: true
+---
+
+
+The following libraries will be used in the analysis 
+
+```{r, echo=TRUE}
+library(plyr)
+library(ggplot2)
+library(chron)
+```
+
+* **plyr**: will be used to manipulate datas
+* **ggplot2**: will be used for some of the plot
+* **chron**: will be used to discriminate between weekdays and weekends
+
+I will suppose that the required project has been cloned in the home 
+directory of a linux machine; otherwise the proper working directory should be inserted below
+
+```{r, echo=TRUE}
+setwd("~/RepData_PeerAssessment1")
+```
+
+## Loading and preprocessing the data
+The data are contained in a compressed file; I have to uncompress it and to load it. I will specify the NA string too.
+
+```{r, echo=TRUE}
+unzip("activity.zip")
+
+activity <- read.csv2("activity.csv", sep = ",", na.strings = "NA")
+```
